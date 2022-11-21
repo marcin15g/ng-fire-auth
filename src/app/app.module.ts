@@ -18,7 +18,10 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AuthService } from './shared/services/auth.service';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './shared/modules/material.module';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { CoolGoogleButtonComponent, CoolSocialLoginButtonsModule } from '@angular-cool/social-login-buttons';
 
 @NgModule({
   declarations: [
@@ -37,10 +40,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    NoopAnimationsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    CoolSocialLoginButtonsModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
   ],
   bootstrap: [AppComponent]
 })

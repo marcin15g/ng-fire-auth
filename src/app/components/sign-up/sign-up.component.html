@@ -1,53 +1,37 @@
-<div class="displayTable">
-    <div class="displayTableCell">
-      <div class="authBlock">
+  <div class="wrapper">
+    <mat-card>
+      <div class="inner-wrapper">
         <h3>Sign Up</h3>
-        <div class="formGroup">
-          <input
-            type="email"
-            class="formControl"
-            placeholder="Email Address"
-            #userEmail
-            required
-          />
-        </div>
-        <div class="formGroup">
-          <input
-            type="password"
-            class="formControl"
-            placeholder="Password"
-            #userPwd
-            required
-          />
-        </div>
-        <div class="formGroup">
-          <input
-            type="button"
-            class="btn btnPrimary"
-            value="Sign Up"
-            (click)="authService.SignUp(userEmail.value, userPwd.value)"
-          />
-        </div>
-        <div class="formGroup">
-          <span class="or"><span class="orInner">Or</span></span>
-        </div>
-        <!-- Continue with Google -->
-        <div class="formGroup">
-          <button
-            type="button"
-            class="btn googleBtn"
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput type="email" #userEmail required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" #userPassword required>
+        </mat-form-field>
+        <button 
+          class="btn-log-in"
+          mat-raised-button 
+          color="primary"
+          (click)="authService.SignUp(userEmail.value, userPassword.value)"
+        >Create new account</button>
+        <span class="or-spacer"><hr>Or<hr></span>
+        <div class="btn-row">
+          <cool-google-button 
             (click)="authService.GoogleAuth()"
-          >
-            <i class="fab fa-google-plus-g"></i>
-            Continue with Google
-          </button>
+          >Log in with Google</cool-google-button> 
+          <cool-facebook-button
+          >Log in with Facebook</cool-facebook-button>
         </div>
+        <span class="spacer"></span>
+        <div class="forgot-password">
+          <span class="redirect" routerLink="/forgot-password">Forgot Password?</span>
+        </div>
+        <div class="redirectToLogin">
+          <span>Already have an account?<span class="redirect" routerLink="/sign-in"> Log in</span></span>
+        </div> 
       </div>
-      <div class="redirectToLogin">
-        <span
-          >Already have an account?
-          <span class="redirect" routerLink="/sign-in">Log In</span></span
-        >
-      </div>
-    </div>
+    </mat-card>
   </div>
+    
